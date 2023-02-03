@@ -4,6 +4,7 @@ const navLinksEl = document.querySelector('.nav-links');
 const navLinkEl = document.querySelectorAll('.nav-link');
 const sectionEl = document.querySelectorAll('.section');
 const actorsContainerEl = document.querySelector('.actors-container');
+const moviesContainerEl = document.querySelector('.movies-container');
 
 document.addEventListener('DOMContentLoaded', () => {
   fetch(`${BASE_URL}people`).then((res) => res.json()).then(({ results }) => {
@@ -23,6 +24,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }).catch(() => {
     actorsContainerEl.innerHTML = '<h2>We ran into issues, please try again later</h2>';
   });
+
+  fetch(`${BASE_URL}films`).then((res) => res.json()).then(({ results }) => {
+    moviesContainerEl.innerHTML = '';
+
+    results.forEach((film) => {
+      const output = `
+        <div class="movie">
+          <p class="movie-title">Title: ${film.title}</p>
+          <p>Episode: ${film.episode_id}</p>
+          <p>Director: ${film.director}</p>
+          <p>Producer: ${film.producer}</p>
+          <a onclick="movieSelected('${film.url}')" href="#">See actors</a>
+        </div>`;
+      moviesContainerEl.insertAdjacentHTML('beforeend', output);
+    });
+  }).catch(() => {
+    actorsContainerEl.innerHTML = '<h2>We ran into issues, please try again later</h2>';
+  });
 });
 
 const actorSelected = (url) => {
@@ -30,6 +49,12 @@ const actorSelected = (url) => {
   window.location = 'actor.html';
   return false;
 };
+
+const movieSelected = (url) => {
+    sessionStorage.setItem('movieId', url);
+    window.location = 'movie.html';
+    return false;
+  };
 
 navLinksEl.addEventListener('click', (e) => {
   const clicked = e.target;
