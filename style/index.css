@@ -61,4 +61,27 @@
     margin-top: 2.4rem;
     margin-bottom: 1.8rem;
     font-size: 2rem;
+    color: #2a9d8f;
+  }
+  
+  .actors-container {
+    margin-bottom: 2.4rem;
+    display: flex;;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-radius: 5px;
+  }
+  
+  .actor {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    min-width: 300px;
+    color: #264653;
+    padding: 1rem 0;
+    box-shadow: 1px 1px 5px #d3fbf4;
+    border-radius: 5px;
+  }
+  
+  .actor-name {
+    font-weight: 700;
   }
