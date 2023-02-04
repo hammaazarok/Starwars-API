@@ -5,7 +5,7 @@ const navLinkEl = document.querySelectorAll('.nav-link');
 const sectionEl = document.querySelectorAll('.section');
 const actorsContainerEl = document.querySelector('.actors-container');
 const moviesContainerEl = document.querySelector('.movies-container');
-
+actorsContainerEl.innerHTML = '<h2>Loading ...</h2>';
 document.addEventListener('DOMContentLoaded', () => {
   fetch(`${BASE_URL}people`).then((res) => res.json()).then(({ results }) => {
     actorsContainerEl.innerHTML = '';

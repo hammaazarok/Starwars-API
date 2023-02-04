@@ -3,7 +3,7 @@ const filmsContainerEl = document.querySelector('.films-container');
 
 document.addEventListener('DOMContentLoaded', () => {
   const actorId = sessionStorage.getItem('actorId');
-  filmsContainerEl.innerHTML = '';
+  noticeEl.innerHTML = 'Loading ...';
   fetch(actorId).then((res) => res.json()).then((data) => {
     const movies = data.films;
 
